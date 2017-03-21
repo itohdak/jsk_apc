@@ -247,7 +247,10 @@
 ;; 	(send *fetch* :inverse-kinematics (make-coords :pos (float-vector x y z)) :debug-view t) ;; move hand to the very place where the target object exists
 ;; 	(move 3000)))
 ;;   )
-  
+
+(defun move-arm ()
+  (send *fetch* :inverse-kinematics (make-coords :pos (float-vector x y z) :rpy (float-vector 0 (/ pi 2) 0)) :debug-view t)
+  (move 6000))
   
 (defun try-grasp()
   (send *ri* :go-grasp :effort 60))
